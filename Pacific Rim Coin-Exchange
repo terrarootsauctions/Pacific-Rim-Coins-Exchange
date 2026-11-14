@@ -1,0 +1,43 @@
+>= thirty_days_ago)
+.order_by(AutonomousEvolutionLogDB.recorded_at.desc())
+.all()
+)
+return {
+"report_title": "PRICE — 30-Day Autonomous Executive Check-In",
+"generated_at_utc": now.isoformat(),
+"system_status": {
+"uptime_mode": "24/7/365_CONTINUOUS",
+"algorithm_version": ENGINE_RUNTIME_STATE["algorithm_version"],
+"cryptographic_ledger_verified": chain_valid,
+"total_immutable_audit_events": len(entries),
+},
+"first_hawaiian_bank_treasury_30d": {
+"destination_bank": FHB_BANK_NAME,
+"masked_account": mask_account(FHB_SETTLEMENT_ACCOUNT),
+"settled_transactions_count": len(recent_settlements),
+"total_platform_fees_earned_usd": f"{total_30d_fees:.2f}",
+"total_net_seller_payouts_usd": f"{total_30d_seller_payouts:.2f}",
+},
+"global_marketplace_metrics": {
+"total_all_time_transactions": total_txs,
+"completed_settled_transactions": settled_txs,
+"active_dispute_holds": active_disputes,
+},
+"autonomous_self_healing_and_improvement_30d": {
+"total_autonomous_actions": len(recent_evolutions),
+"recent_log": [
+{
+"id": e.evolution_id,
+"type": e.cycle_type,
+"version": f"{e.previous_version} -> {e.new_version}",
+"change": e.parameter_changed,
+"timestamp": e.recorded_at.isoformat(),
+}
+for e in recent_evolutions[:10]
+],
+},
+}
+
+<FollowUp>
+Once you paste those three files into your GitHub repository (`pacific-rim-coin-exchange`), let me know when you are on your **Render dashboard** and I will guide you through the final deploy click.
+</FollowUp>
